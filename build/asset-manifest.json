@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/cmpsc185_react/static/css/main.a866d83b.chunk.css",
+    "main.js": "/cmpsc185_react/static/js/main.3bd435a5.chunk.js",
+    "main.js.map": "/cmpsc185_react/static/js/main.3bd435a5.chunk.js.map",
+    "runtime-main.js": "/cmpsc185_react/static/js/runtime-main.bfde8fbc.js",
+    "runtime-main.js.map": "/cmpsc185_react/static/js/runtime-main.bfde8fbc.js.map",
+    "static/js/2.75fab587.chunk.js": "/cmpsc185_react/static/js/2.75fab587.chunk.js",
+    "static/js/2.75fab587.chunk.js.map": "/cmpsc185_react/static/js/2.75fab587.chunk.js.map",
+    "index.html": "/cmpsc185_react/index.html",
+    "precache-manifest.982f6ddf7c094cceef4f3de5eea587a0.js": "/cmpsc185_react/precache-manifest.982f6ddf7c094cceef4f3de5eea587a0.js",
+    "service-worker.js": "/cmpsc185_react/service-worker.js",
+    "static/css/main.a866d83b.chunk.css.map": "/cmpsc185_react/static/css/main.a866d83b.chunk.css.map",
+    "static/js/2.75fab587.chunk.js.LICENSE.txt": "/cmpsc185_react/static/js/2.75fab587.chunk.js.LICENSE.txt",
+    "static/media/1.jpg": "/cmpsc185_react/static/media/1.3cc7da7a.jpg",
+    "static/media/1.png": "/cmpsc185_react/static/media/1.95db1821.png",
+    "static/media/1.mp4": "/cmpsc185_react/static/media/1.eea186e2.mp4",
+    "static/media/10.jpg": "/cmpsc185_react/static/media/10.d5243e5a.jpg",
+    "static/media/2.png": "/cmpsc185_react/static/media/2.5bd63455.png",
+    "static/media/2.mp4": "/cmpsc185_react/static/media/2.bee33f0d.mp4",
+    "static/media/3.jpg": "/cmpsc185_react/static/media/3.30b83a7d.jpg",
+    "static/media/4.jpg": "/cmpsc185_react/static/media/4.65faa8c0.jpg",
+    "static/media/5.jpeg": "/cmpsc185_react/static/media/5.9d73703e.jpeg",
+    "static/media/6.jpg": "/cmpsc185_react/static/media/6.9c168b3c.jpg",
+    "static/media/7.png": "/cmpsc185_react/static/media/7.66473ba6.png",
+    "static/media/7.jpg": "/cmpsc185_react/static/media/7.827eb382.jpg",
+    "static/media/8.jpg": "/cmpsc185_react/static/media/8.bb570e2d.jpg",
+    "static/media/9.png": "/cmpsc185_react/static/media/9.050f1cc9.png",
+    "static/media/logo2.png": "/cmpsc185_react/static/media/logo2.ef0d7fde.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bfde8fbc.js",
+    "static/js/2.75fab587.chunk.js",
+    "static/css/main.a866d83b.chunk.css",
+    "static/js/main.3bd435a5.chunk.js"
+  ]
+}
