@@ -1,0 +1,126 @@
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+/* ....Home page's css file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+.home{
+  /* padding:20px; */
+	display: flex;
+
+}
+.home img{
+  width: 30%;
+  position: fixed;
+  left:0px;
+  top:150px;
+  padding-left: 15%;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  /* display: block; */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  float: left;
+}
+
+#text1 {
+  width: 50%;
+  padding-top: 10%;
+  color: #A8A8A8;
+  font-family: verdana;
+  font-size: calc(9px + .8vw);
+  display: block;
+  float: right;
+}
+
+
+/* ....Images page's css file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+.image{
+  padding:20px;
+  
+}
+
+.image img {
+  margin: 20px;
+  width: 21.5%;
+  height: auto;
+}
+
+.gallary{
+  padding: 14px 5%;    
+  }
+  
+.gallary img {
+  width: 45%;
+  display: flex;
+  text-align: center;
+  float: left;
+  text-decoration: none;
+  padding: 5px;
+}
+
+/* ....Videos page's css file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+.vid {
+  justify-content: center;
+  align-content: center;
+  
+}
+
+.vid video{
+  margin: 5px;
+  width: 45%;
+  height: auto;
+  padding: 15px;
+}
+
+
+/* ....Project page's css file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+.project {
+  padding: 20px 10%;
+}
+.project blocks{
+  display: flex;
+  text-align: center;
+  float: left;
+  text-decoration: none;
+}
+
+/* ....TO TOP css file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+.bar {
+  font-family: sans-serif;
+  /* padding: 1rem 5rem; */
+}
+
+p{
+  text-align:center;
+  margin:auto;
+  color: #FFFFF8;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

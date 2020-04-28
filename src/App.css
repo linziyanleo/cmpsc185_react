@@ -1,0 +1,50 @@
+body {
+  width: 100%;
+  height: 100%;
+  font-family: verdana;
+  background-color: #222222;
+  }
+
+
+  ul#menu{
+  position: fixed;
+  top:0;
+  width:100%;
+  height: calc(65px + .8vw);
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #2E383F;
+  z-index: 10;
+}
+
+
+  
+.tab{
+  height:calc(80px + .8vw);
+  float: left; 
+  width: 24%;
+  display: block;
+  color: #E4EDDB;
+  text-align: center;
+  text-decoration: none;
+  font-size: calc(9px + .8vw);
+}
+
+.tab >h2:hover{
+  display: block;
+  /* background-color: rgb(24, 24, 24); */
+  color: rgb(68, 104, 102);
+}
+
+h3{
+  position: fixed;
+  width: 50%;
+  top:155px;
+  right: 3px;
+  padding-top: 10%;
+  color: #A8A8A8;
+  font-family: verdana;
+  font-size: calc(9px + .8vw);
+  display: block;
+  float: right;
+}
