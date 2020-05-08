@@ -86,6 +86,7 @@ export class Form extends Component {
       };
       firebase.database().ref('data').push().set(formObj);
       this.setState({shouldUpdate: true});
+      alert("Message delivered.");
     }
   }
 
