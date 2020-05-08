@@ -140,7 +140,10 @@ export class Form extends Component {
             </form>
 
             </div>
+            <br></br>
+
             <div className='responses animated fadeInRight'>
+                <br></br><br></br>
               <p>Messages</p>
               {this.state.data.map((entry) => {
                 if(entry.visibility !== 'private') {

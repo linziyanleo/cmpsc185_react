@@ -53,25 +53,25 @@ h3{
 }
 
 
-
-/* form */
 #form-section {
   padding: 5px;
-  display: block;
+  display: flex;
+  float: left;
   justify-items: center;
   height: 100%;
+  width: 95%;
 }
 
 .form {
-  width: 95%;
+  width: 100%;
   height: 67vh;
-  padding: 0px 0px 0px 16px;
+  padding: 0px 0px 10px 10px;
   overflow-y: auto;
   border-radius: 8px;
 }
 
 .responses {
-  width: 95%;
+  width: 100%;
   height: 67vh;
   margin-left: 12px;
   margin-bottom: 12px;
