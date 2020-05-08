@@ -22,7 +22,7 @@ body {
 .tab{
   height:calc(80px + .8vw);
   float: left; 
-  width: 24%;
+  width: 19.5%;
   display: block;
   color: #E4EDDB;
   text-align: center;
@@ -36,6 +36,9 @@ body {
   color: rgb(68, 104, 102);
 }
 
+
+
+
 h3{
   position: fixed;
   width: 50%;
@@ -47,4 +50,97 @@ h3{
   font-size: calc(9px + .8vw);
   display: block;
   float: right;
+}
+
+
+
+/* form */
+#form-section {
+  padding: 5px;
+  display: block;
+  justify-items: center;
+  height: 100%;
+}
+
+.form {
+  width: 95%;
+  height: 67vh;
+  padding: 0px 0px 0px 16px;
+  overflow-y: auto;
+  border-radius: 8px;
+}
+
+.responses {
+  width: 95%;
+  height: 67vh;
+  margin-left: 12px;
+  margin-bottom: 12px;
+  overflow-y: auto;
+}
+
+.response {
+  background-color: #BFD6D4;
+  padding: 15px;
+  margin-top: 10px;
+  border: 2px solid #507A77;
+  line-height: 25px;
+}
+
+#submit {
+  background-color: #507A77;
+  color: #FFF;
+  border: 1px solid #2F4F4D;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+input[type=text] {
+  border: 1px solid #AAA;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 4px 0px 0px 0px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  border: 1px solid #AAA;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 4px 0px 0px 0px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+}
+
+b {
+  color: #B00000;
+  font-weight: normal;
+}
+
+.note {
+  float: right;
+  font-size: 14px;
+}
+
+.name {
+  color: #2F4F4D;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 8px 0px 0px;
+  line-height: 25px;
+}
+
+.message {
+  margin: 16px 0px 0px 8px;
+}
+
+.date {
+  float: right;
+  font-size: 14px;
+  letter-spacing: 1.5px;
 }
