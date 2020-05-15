@@ -22,12 +22,12 @@ body {
 .tab{
   height:calc(80px + .8vw);
   float: left; 
-  width: 19.5%;
+  width: 16.5%;
   display: block;
   color: #E4EDDB;
   text-align: center;
   text-decoration: none;
-  font-size: calc(9px + .8vw);
+  font-size: calc(7px + .8vw);
 }
 
 .tab >h2:hover{
@@ -138,4 +138,92 @@ select {
   float: right;
   font-size: 14px;
   letter-spacing: 1.5px;
+}
+
+/* Movie Page */
+/* .mov-container {
+  margin-top: 40px;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+} */
+
+.mov-child {
+  width: 33%;
+  height: calc(30vw * 16/9);
+  display: block;
+  float: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.movCaption {
+  padding: 10px 0px;
+  text-align: center;
+}
+
+.mov-child img {
+  width: 100%;
+  cursor: pointer;
+}
+
+
+.movLightbox {
+  display: grid;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.8);
+  z-index: 1;
+  overflow: auto;
+  position: fixed;
+  align-content: center;
+  justify-content: center;
+}
+
+.movLightbox-container {
+  width: 650px;
+  margin: auto;
+  max-width: 750px;
+  background-color: rgb(39, 39, 39);
+  display: flex;
+  flex-direction: row;
+}
+
+.movLightbox-content {
+  height: 100%;
+  margin: auto;
+  float: left;
+  outline: 1px solid #111;
+  outline-offset: -5px;
+}
+
+.title {
+  color: rgb(212, 212, 212);
+  font-size: 24px;
+  line-height: 48px;
+}
+
+.director {
+  color: rgb(212, 212, 212);
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.rating {
+  color:#E1B616;
+  font-weight: bold;
+}
+
+.movLightbox-info {
+  height: 100%;
+  background-color: rgb(39, 39, 39);
+  margin: auto;
+  padding: 0px 20px;
+  float: right;
+  max-width: 750px;
+  color: #555;
 }
