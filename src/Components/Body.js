@@ -5,6 +5,7 @@ import Videos from './Videos'
 import ExternalLinks from './ExternalLinks'
 import Form from './Form'
 import Movies from './Movies'
+import Add from './Add';
 
 export class Body extends Component{
 	displayContent =() => {
@@ -24,9 +25,12 @@ export class Body extends Component{
 
 		else if (activeTab==5)
 			return <Form/>
-		else
+
+		else if (activeTab==6)
 			return <Movies/>
-		
+
+		else
+			return <Add/>
 	}
   render(){
 

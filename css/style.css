@@ -63,12 +63,12 @@ p{
   text-align:center;
   margin:auto;
   /* padding: 10px 30%; */
-  color: #FFFFF8;
+  color: rgb(0, 0, 0);
 }
 
 img {
   position: relative;
-  width: 100%;
+  
   /* display: inline; */
 }
 

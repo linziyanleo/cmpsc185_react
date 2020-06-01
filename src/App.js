@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './App.css'
+import './style.css'
 import Body from './Components/Body'
 import TabList from './Components/TabList'
 
@@ -46,8 +47,13 @@ export class App extends Component{
     {
       id:6,
       title: 'Movies'
+    },
+
+    {
+      id:7,
+      title: 'Add'
     }
-    
+
     ]
 
     return(
