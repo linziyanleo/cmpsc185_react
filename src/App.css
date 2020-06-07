@@ -141,8 +141,8 @@ select {
 }
 
 .movie {
-  width: 330px;
-  height: 500px;
+  width: 22%;
+  height: auto;
 	padding: 1em;
 	cursor: pointer;
 }
