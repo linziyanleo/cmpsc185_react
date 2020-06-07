@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/cmpsc185_react/static/css/main.cf39b9fe.chunk.css",
-    "main.js": "/cmpsc185_react/static/js/main.df21feb9.chunk.js",
-    "main.js.map": "/cmpsc185_react/static/js/main.df21feb9.chunk.js.map",
+    "main.css": "/cmpsc185_react/static/css/main.dc7c0e19.chunk.css",
+    "main.js": "/cmpsc185_react/static/js/main.ca360aa7.chunk.js",
+    "main.js.map": "/cmpsc185_react/static/js/main.ca360aa7.chunk.js.map",
     "runtime-main.js": "/cmpsc185_react/static/js/runtime-main.bfde8fbc.js",
     "runtime-main.js.map": "/cmpsc185_react/static/js/runtime-main.bfde8fbc.js.map",
-    "static/js/2.6b60de5c.chunk.js": "/cmpsc185_react/static/js/2.6b60de5c.chunk.js",
-    "static/js/2.6b60de5c.chunk.js.map": "/cmpsc185_react/static/js/2.6b60de5c.chunk.js.map",
+    "static/css/2.ccab356c.chunk.css": "/cmpsc185_react/static/css/2.ccab356c.chunk.css",
+    "static/js/2.47e08404.chunk.js": "/cmpsc185_react/static/js/2.47e08404.chunk.js",
+    "static/js/2.47e08404.chunk.js.map": "/cmpsc185_react/static/js/2.47e08404.chunk.js.map",
     "index.html": "/cmpsc185_react/index.html",
-    "precache-manifest.38596b04f37ad346ba8a001b5591a05f.js": "/cmpsc185_react/precache-manifest.38596b04f37ad346ba8a001b5591a05f.js",
+    "precache-manifest.d79c7b30dddefa7fdd8e9dceb6700f67.js": "/cmpsc185_react/precache-manifest.d79c7b30dddefa7fdd8e9dceb6700f67.js",
     "service-worker.js": "/cmpsc185_react/service-worker.js",
-    "static/css/main.cf39b9fe.chunk.css.map": "/cmpsc185_react/static/css/main.cf39b9fe.chunk.css.map",
-    "static/js/2.6b60de5c.chunk.js.LICENSE.txt": "/cmpsc185_react/static/js/2.6b60de5c.chunk.js.LICENSE.txt",
+    "static/css/2.ccab356c.chunk.css.map": "/cmpsc185_react/static/css/2.ccab356c.chunk.css.map",
+    "static/css/main.dc7c0e19.chunk.css.map": "/cmpsc185_react/static/css/main.dc7c0e19.chunk.css.map",
+    "static/js/2.47e08404.chunk.js.LICENSE.txt": "/cmpsc185_react/static/js/2.47e08404.chunk.js.LICENSE.txt",
     "static/media/1.jpg": "/cmpsc185_react/static/media/1.3cc7da7a.jpg",
     "static/media/1.png": "/cmpsc185_react/static/media/1.95db1821.png",
     "static/media/1.mp4": "/cmpsc185_react/static/media/1.eea186e2.mp4",
@@ -30,8 +32,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.bfde8fbc.js",
-    "static/js/2.6b60de5c.chunk.js",
-    "static/css/main.cf39b9fe.chunk.css",
-    "static/js/main.df21feb9.chunk.js"
+    "static/css/2.ccab356c.chunk.css",
+    "static/js/2.47e08404.chunk.js",
+    "static/css/main.dc7c0e19.chunk.css",
+    "static/js/main.ca360aa7.chunk.js"
   ]
 }
