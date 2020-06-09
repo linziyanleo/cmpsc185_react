@@ -2,40 +2,62 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox';
 import 'react-popupbox/dist/react-popupbox.css'; 
-import config from './FBconf.js';
-
+import config from './FBconf';
+const axios = require('axios')
 const firebase = require('firebase');
 
-export class AddMovie extends Component {
+export class Movies extends Component {
 	constructor() {
 		super();
 		this.state = {
-			movies: [],
-			moviesToLoad: 8,
-			last: '',
-			loaded: 0,
-			loading: true,
-			movieID: '',
-			listName: '',
+            src: '',
+            title: '',
+            imdb: '',
+            plot: '',
+            director: '',
+            movieID: '',
+			List: '',
 			lists: {},
 			movieListPairs: [],
 			addToListName: 'Add to List',
 			currentList: {id: '', name: 'All'},
 			searchQuery: '',
             filteredMovies: [],
-            maxLoaded: false
+            maxLoaded: false,
+			movies: [],
+			moviesToLoad: 8,
+			last: '',
+			loaded: 0,
+			loading: true,
 		};
 		this.wrapper = React.createRef();
-
         this.setState({loading:false});
-	}
+    }
+    
+    getMovieInfo(obj, req) {
+        axios.get(req)
+        .then(function (response) {
+          obj.setState({
+            src: response.data.Poster,
+            title: response.data.Title,
+            imdb: response.data.imdbRating,
+            plot: response.data.Plot,
+            director: response.data.Director,
+            year: response.data.year,
+            runtime: response.data.runtime,
+            genre: response.data.genre,
+            Actor: response.data.Actor,
+          });
+          console.log(response.data);
+        })
+      }
 
 	componentDidMount() {
 		if (!firebase.apps.length) {
 			firebase.initializeApp(config);
 		}
 
-		this.loadMovies();
+		this.LoadMovies();
 
 		let ref = firebase.database().ref('lists');
 		ref.orderByChild('name').on('value', snapshot => {
@@ -70,7 +92,7 @@ export class AddMovie extends Component {
 
     }
 
-	loadMovies = () => {
+	LoadMovies = () => {
 		if (this.state.currentList.name === 'All') {
 			let ref = firebase.database()
 				.ref('movies')
@@ -80,7 +102,6 @@ export class AddMovie extends Component {
 			ref.on('child_added', snapshot => {
 				let movie = snapshot.val();
 				let last = movie.title;
-
 				let movies = this.state.movies;
 				movies.push(movie);
 
@@ -127,7 +148,7 @@ export class AddMovie extends Component {
 		});
 	}
 
-	loadMore = () => {
+	LoadMore = () => {
 		if (this.state.loading) return;
 		
 		this.setState({
@@ -185,7 +206,7 @@ export class AddMovie extends Component {
 				'movieID': ''
 			});
 
-			Axios.get('https://www.omdbapi.com/?apikey=' + '520dbeca' + '&t=' + title)
+			Axios.get('https://www.omdbapi.com/?apikey=c497da4f&t=' + title)
 			.then(response => {
 				if (response.data.Response === 'False') {
 					alert('Movie cannot be found! Try another one.');
@@ -209,7 +230,8 @@ export class AddMovie extends Component {
 				movie.year = response.data.Year;
 				movie.plot = response.data.Plot;
 				movie.rating = response.data.imdbRating;
-                movie.poster = response.data.Poster;
+				movie.poster = response.data.Poster;
+				movie.Actors = response.data.Actors;
                 firebase.database().ref('movies').push().set(movie);
 				
 			});
@@ -230,15 +252,15 @@ export class AddMovie extends Component {
 		});
 
 		if (duplicate) {
-			alert('Movie existed!');
+			alert('Cannot add a movie twice!');
 			return;
 		}
 
 
-		Axios.get('https://www.omdbapi.com/?apikey=' + '520dbeca' + '&i=' + id)
+		Axios.get('https://www.omdbapi.com/?apikey=c497da4f&i=' + id)
 		.then(response => {
 			if (response.data.Response === 'False') {
-				alert('Movie not found!');
+				alert('Cannot find movie!');
 				return;
 			}
 
@@ -249,7 +271,8 @@ export class AddMovie extends Component {
 			movie.year = response.data.Year;
 			movie.plot = response.data.Plot;
             movie.rating = response.data.imdbRating;
-            movie.poster = response.data.Poster;
+			movie.poster = response.data.Poster;
+			movie.Actors = response.data.Actors;
             firebase.database().ref('movies').push().set(movie);
             window.scrollTo({
                 top: document.body.scrollHeight,
@@ -257,24 +280,35 @@ export class AddMovie extends Component {
             });
 
 		});
-	}
+    }
+
+    dimPoster(e) {
+        e.target.style.opacity = 0.3;
+      }
+    
+    resetPoster(e) {
+        e.target.style.opacity = 1;
+    }
+    
+    
+    
 
 	addList = (event) => {
 		event.preventDefault();
-		console.log('addList: ' + this.state.listName);
+		console.log('addList: ' + this.state.List);
 		
-		let listName = this.state.listName;
+		let List = this.state.List;
 		
 		this.setState({
-			'listName': ''
+			'List': ''
 		});
 
 		let duplicate = false;
 		Object.entries(this.state.lists).forEach(list => {
-			if (listName.toLowerCase() === list[1].toLowerCase()) duplicate = true;
+			if (List.toLowerCase() === list[1].toLowerCase()) duplicate = true;
 		});
 		if (duplicate) {
-			alert('List already exists!');
+			alert('Cannot create a list twice!');
 			return;
 		};
 		
@@ -283,8 +317,8 @@ export class AddMovie extends Component {
 		
 		let updates = {};
 		updates['/lists/' + listRefKey + '/id'] = listRefKey;
-		updates['/lists/' + listRefKey + '/name'] = listName;
-        alert('List is successfully added!');
+		updates['/lists/' + listRefKey + '/name'] = List;
+        alert('List created!');
 		firebase.database().ref().update(updates);
 	}
 
@@ -303,21 +337,21 @@ export class AddMovie extends Component {
 	}
 
 	updateList = (event) => {
-		let listName = '';
+		let List = '';
 		if (event.target.value === '') {
-			listName = 'All';
+			List = 'All';
 		} else {
-			listName = this.state.lists[event.target.value];
+			List = this.state.lists[event.target.value];
 		}
 
 		this.setState({
 			movies: [],
-			currentList: {id: event.target.value, name: listName},
+			currentList: {id: event.target.value, name: List},
 			loaded: 0,
 			loading: true
 		});
 
-		this.forceUpdate(this.loadMovies);
+		this.forceUpdate(this.LoadMovies);
 	}
 
 	addToList = (event, movieID) => {
@@ -328,13 +362,13 @@ export class AddMovie extends Component {
 			if (pair[0] === listID && pair[1] === movieID) duplicate = true;
 		});
 		if (duplicate) {
-			alert('Movie already in the selected list!');
+			alert('Cannot add a movie twice!');
 			return;
 		};
 		
 		let ref = firebase.database().ref('movie-lists');
 		ref.push().set({[listID]: movieID});
-        alert('Added ' + movieID + ' to ' +  this.state.lists[event.target.value]);
+        alert('Successfully add ' + movieID + ' to ' +  this.state.lists[event.target.value]);
 		
 	}
 
@@ -348,10 +382,12 @@ export class AddMovie extends Component {
 
 		return movieIDs;
 	}
-
-	search = (event) => {
-		event.preventDefault();
-	}
+    
+    inputHandler = (event) => {
+        let field = event.target.name;
+        let value = event.target.value;
+        this.setState({[field]: value});
+    }
 
 	deleteMovie = (movieID) => {
 		console.log('deleteMovie');
@@ -379,69 +415,43 @@ export class AddMovie extends Component {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
-	}
-
-	lockScroll = () => {
-		document.body.style.overflow = 'hidden';
-	}
-
-	unlockScroll = () => {
-		document.body.style.overflow = 'inherit';
     }
-    dimPoster(e) {
-        e.target.style.opacity = 0.5;
-      }
     
-    resetPoster(e) {
-        e.target.style.opacity = 1;
-    }
 
-	displayMovies = () => {
+	Movies = () => {
 		return this.state.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchQuery)).map(movie => (
 			<img className="moviePoster" src={movie.poster}
                 key={movie.id} alt=""
                 onMouseEnter={this.dimPoster} onMouseLeave={this.resetPoster}
-				onClick={this.displayLightbox.bind(this, movie)}/>
+				onClick={this.Lightbox.bind(this, movie)}/>
 		));
 	}
 
-	displayLightbox = (movie) => {
+	Lightbox = (movie) => {
 		const content = (
-			
             <div className="movLightboxContainer">
 				<img className="movLightboxImage" src={movie.poster} alt=""/>
 				<div className = "movLightboxContent">
 					<span className = "title">{movie.title}</span>
 					<br></br>
+					<span className = "director">Directed by {movie.director}</span>
 					<br></br>
-					<span className = "director">Directed by: <b>{movie.director}</b></span>
-					<br></br>
-					<br></br>
-					<br></br>
-					<p>{movie.plot}</p>
-					<br></br>
-					<br></br>
-					<span className = "rating">Rating: <b>{movie.rating}</b></span>
-                    <br></br>
-					<br></br>
-                    <div>
-						<select className="dropdown" value={this.state.addToListName} onChange={event => {this.addToList(event, movie.id)}}>
-							<option hidden value="">Add to List</option>
-                             {this.getAddToLists(movie.id)}
-                             
-                        </select>
-                        
-                        
-			 			
-			 		</div>
-                    <br></br>
-					<br></br>
+                    <span className = "rating">IMDB Rate: {movie.rating}</span>
+                    
                     <div>
                         <button className="delete-button-add" onClick={() => {this.deleteMovie(movie.id)}}>Delete</button>
                     </div>
-	
+                    <br></br>
+					<p>{movie.plot}</p>
+
+                    <div>
+						<select className="dropdown" value={this.state.addToListName} onChange={event => {this.addToList(event, movie.id)}}>
+							<option hidden value="">Add to list:</option>
+                             {this.getAddToLists(movie.id)}
+                        </select>
+			 		</div>
+                    
 				</div>
-			
 			</div>
 		)
 
@@ -462,17 +472,29 @@ export class AddMovie extends Component {
 		}
 
 		return (
-			<div>				
+			<div>
 				<div className="movie-forms">
                     <div className="dropdown">
 							<select  onChange={this.updateList} >
-								<option value="">All</option>
+								<option value="">GraphViz</option>
                                 {this.getUpdateLists()}
-                                
-                            </select>                            
+                            </select>
+                            
+                            
 						</div>
 					<div className="movie-add-forms">
-                        
+                         <form className="movie-form" onSubmit={e => this.addList(e)}>
+							<div>
+								<input type="text"
+									name="List"
+									className="form-input-text"
+									value={this.state.List}
+									onChange={e => this.handleChange(e)}
+									placeholder="Please enter a name"/>
+                                <input type='submit' value='Create a list'/>
+							</div>
+						</form>
+
 						<form className="movie-form" onSubmit={e => this.addMovie(e)}>
 							<div>
 								<input type="text"
@@ -480,38 +502,12 @@ export class AddMovie extends Component {
 									className="form-input-text"
 									value={this.state.movieID}
 									onChange={e => this.handleChange(e)}
-									placeholder="Movie title or IMDB ID"/>
-                                
+									placeholder="Please enter the title"/>
                                 <input type='submit' value='Add a Movie'/>
 							</div>
 						</form>
 
-						<form className="movie-form" onSubmit={e => this.addList(e)}>
-							<div>
-								<input type="text"
-									name="listName"
-									className="form-input-text"
-									value={this.state.listName}
-									onChange={e => this.handleChange(e)}
-									placeholder="Enter a new list name"/>
-                                <input type='submit' value='Create List'/>
-							</div>
-						</form>
 						
-						<form className="movie-form" onSubmit={e => this.search(e)}>
-						<div>
-                        <label><span>Search</span></label>
-                        <div>
-							<input type="text"
-								name="searchQuery"
-								className="form-input-text"
-								value={this.state.searchQuery}
-								onChange={e => this.handleChange(e)}
-								placeholder="Enter a name"/>
-                        </div>
-							
-						</div>
-					</form>
 
 					</div>
 
@@ -521,12 +517,11 @@ export class AddMovie extends Component {
 				
 				<div className="movies"
 					ref={this.moviesScroll}>
-					{this.displayMovies()}
-
+					{this.Movies()}
 					<PopupboxContainer { ...popupboxConfig } />
 				</div>
                 <div className='button'>
-                {!(this.state.loading) && <button className = 'but' onClick={this.loadMore}>Load more</button>}
+                {!(this.state.loading) && <button className = 'but' onClick={this.LoadMore}>Load More...</button>}
                 </div>
 			</div>
 
@@ -534,4 +529,4 @@ export class AddMovie extends Component {
 	}
 }
 
-export default AddMovie;
+export default Movies;

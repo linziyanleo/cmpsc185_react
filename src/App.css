@@ -22,7 +22,7 @@ body {
 .tab{
   height:calc(80px + .8vw);
   float: left; 
-  width: 14%;
+  width: 12%;
   display: block;
   color: #E4EDDB;
   text-align: center;
@@ -338,4 +338,11 @@ textarea:not(:focus):optional:not(:placeholder-shown) ~ span {
   padding-right: 24px;
   margin: 8px;
   transition: 0.2s;
+}
+
+.add-to-graph-button {
+	left: 150px;
+	background-color: rgb(243, 246, 19);
+	width: 100px;
+	height: 50px;
 }
